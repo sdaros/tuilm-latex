@@ -1,25 +1,20 @@
-\ProvidesPackage{tuilm-wi-preamble}
+\ProvidesPackage{custom-preamble}
 
-% --- set document language ---
+% --------------------------------------------
+% LANGUAGE SETTINGS
+% --------------------------------------------
 
 \AtBeginDocument{
 	\selectlanguage{ngerman}
 %	\selectlanguage{english}
 }
 
-% ----------------------- PACKAGE INCLUDES -----------------------------
-
-% --- More info about using the included packages can be found at ------
-% --- ShareLatex: https://www.sharelatex.com/learn/Main_Page
-
-% --- XeLaTeX specific settings
+% --------------------------------------------
+% FONT SETTINGS (XeLaTeX)
+% --------------------------------------------
 
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX} % Supports LaTeX quoting style
-
-% --------------------------------------------
-% FONT SETTINGS
-% --------------------------------------------
 
 % Tex Gyre Termes
 \setromanfont[
@@ -28,6 +23,15 @@ BoldFont=texgyretermes-bold.otf,
 ItalicFont=texgyretermes-italic.otf,
 BoldItalicFont=texgyretermes-bolditalic.otf,
 ]{texgyretermes-regular.otf}
+
+% ----------------------------------------------------------------
+% PACKAGE INCLUDES
+% ---------------------------------------------------------------- 
+%
+% --- More info about using the included packages can be found at
+% --- ShareLatex: https://www.sharelatex.com/learn/Main_Page
+
+
 
 %--- CODE HIGHLIGHTING SUPPORT -----------------------------
 %--- when using minted all code will need to imported using
