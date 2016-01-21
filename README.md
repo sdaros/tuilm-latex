@@ -1,2 +1,2 @@
 # tuilm-wi
-Latex Templates for Wirtschaftsinformatik at the Technische Universität Ilmenau
+Latex Templates for the Technische Universität Ilmenau.
