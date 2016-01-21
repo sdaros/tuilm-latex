@@ -29,8 +29,12 @@ ItalicFont=texgyretermes-italic.otf,
 BoldItalicFont=texgyretermes-bolditalic.otf,
 ]{texgyretermes-regular.otf}
 
-% --------------------------------------------
-\usepackage{minted} % support formatted code blocks
+%--- CODE HIGHLIGHTING SUPPORT -----------------------------
+%--- when using minted all code will need to imported using
+%--- the \inputminted command because of some wierd bug with
+%--- package minted in conjunction with package standalone
+%=----------------------------------------------------------
+\usepackage{minted}
 \usepackage[table]{xcolor}
 \usepackage{tabularx} % support simple table creation
 \usepackage{fancyhdr} % used for page header
@@ -42,7 +46,6 @@ BoldItalicFont=texgyretermes-bolditalic.otf,
 \usepackage[nosumlimits]{amsmath}
 \usepackage{amssymb}
 \usepackage{multirow}
-\usepackage{subfiles} % Support compiliation of subfiles
 
 \usepackage{graphicx} % Support inserting images
 \graphicspath{{images/}{../images/}} % Path where images are stored

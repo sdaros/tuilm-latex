@@ -22,6 +22,7 @@ main.for
 *.mtc
 *.mtc1
 *.out
+*.sta
 *.bcf
 *.nlo
 *.run.xml

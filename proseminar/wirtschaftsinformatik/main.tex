@@ -5,13 +5,15 @@
                bibliography=totoc, % add bibliography to TOC
                listof=totoc, % add Lists to TOC 
                numbers=noenddot]{scrartcl}
+\usepackage[subpreambles=true]{standalone} % support compilation of subfiles
 \usepackage{tuilm-wi-preamble}
+\usepackage{import}
 \usepackage{makeidx}
 \makeindex
 
 \begin{document}
 
-\subfile{title}
+\import{./}{title}
 
 \pagenumbering{arabic}\setcounter{page}{2}
 \newpage
@@ -26,28 +28,29 @@
 \newpage
 \listofformels % Formelverzeichnis
 \newpage
-\subfile{acronyms}
+\import{./}{acronyms}
 \newpage
 
 \pagenumbering{arabic}\setcounter{page}{3}
 \section{Einleitung}
 \label{sec:einleitung}
-\subfile{sections/section1}
+\import{sections/}{section1}
 
 \section{RDF Grundlagen}
 \label{sec:rdf-grundlagen}
-\subfile{sections/section2} 
+\import{sections/}{section2} 
 
 \section{Linked Data und Serialisierung}
 \label{sec:linked-data-serialisierung}
-\subfile{sections/section3.tex}
+\import{sections/}{section3}
 
 \section{Schlussbemerkungen}
 \label{sec:schlussbemerkungen}
-\subfile{sections/section4.tex}
+\import{sections/}{section4}
+\newpage
 
 \printbibliography[heading=bibintoc, title={Literaturverzeichnis}]	
 \newpage
-\subfile{erklärung.tex} % Eidesstattliche Erklärung
+\import{./}{erklärung} % Eidesstattliche Erklärung
 
 \end{document}
