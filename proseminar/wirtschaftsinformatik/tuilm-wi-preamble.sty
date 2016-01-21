@@ -1,20 +1,5 @@
 \ProvidesPackage{tuilm-wi-preamble}
 
-
-% --- Use systemfonts if user is compiling the document with XeLaTeX ---
-\usepackage{ifxetex}
-\ifxetex
-	\usepackage{fontspec}
-	\defaultfontfeatures{Ligatures=TeX} % Supports LaTeX quoting style
-	% Tex Gyre Termes must be installed locally on the computer or else
-	% the document will not compile! see: https://www.sharelatex.com/learn/XeLaTeX
-	\setromanfont{TeX Gyre Termes}
-\else % Otherwise use times font
-	\usepackage[T1]{fontenc}
-	\usepackage[utf8]{inputenc}
-	\usepackage{times}
-\fi
-
 % --- set document language ---
 
 \AtBeginDocument{
@@ -22,12 +7,29 @@
 %	\selectlanguage{english}
 }
 
-
 % ----------------------- PACKAGE INCLUDES -----------------------------
 
 % --- More info about using the included packages can be found at ------
 % --- ShareLatex: https://www.sharelatex.com/learn/Main_Page
 
+% --- XeLaTeX specific settings
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX} % Supports LaTeX quoting style
+
+% --------------------------------------------
+% FONT SETTINGS
+% --------------------------------------------
+
+% Tex Gyre Termes
+\setromanfont[
+ExternalLocation=./fonts/,
+BoldFont=texgyretermes-bold.otf,
+ItalicFont=texgyretermes-italic.otf,
+BoldItalicFont=texgyretermes-bolditalic.otf,
+]{texgyretermes-regular.otf}
+
+% --------------------------------------------
 \usepackage{minted} % support formatted code blocks
 \usepackage[table]{xcolor}
 \usepackage{tabularx} % support simple table creation
