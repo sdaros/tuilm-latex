@@ -1,0 +1,304 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Original author:
+% Thomas Müllerleile (thomas.muellerleile@tu-ilmenau.de)
+% Bastian Stemmer (bastianstemmer@googlemail.com)
+%
+% Version 0.5 (18.4.2013)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\ProvidesFile{authoryear-icomp-wi.bbx}
+[\abx@bbxid]
+
+\RequireBibliographyStyle{authoryear-icomp}
+
+
+%%% biblatex WI
+\DeclareNameAlias{sortname}{last-first}
+\renewcommand*{\newunitpunct}{\addcomma\space}
+%\renewcommand*{\subtitlepunct}{\addcolon\space}
+\DeclareNameFormat{default}{\usebibmacro{name:last-first}{#1}{#4}{#5}{#7}}
+\DeclareFieldFormat[article]{title}{#1}  % remove quotes from title in article
+\DeclareFieldFormat[inbook]{title}{#1}  % remove quotes from title in inbook
+
+\DeclareFieldFormat[article]{pages}{#1}  % remove Pp. from pages
+\DeclareFieldFormat{journaltitle}{#1}    % remove italics from journal title
+\DeclareFieldFormat[book]{title}{#1}    % remove italics from book title
+\DeclareFieldFormat[inbook]{title}{#1\adddot}    % remove italics from book title
+\DeclareFieldFormat[inbook]{booktitle}{#1\adddot}    % remove italics from book title
+\DeclareFieldFormat[online]{title}{#1\adddot}    % remove italics from book title
+
+\DeclareFieldFormat{url}{\addcolon\space\url{#1}} %remove `url:`
+%\DeclareFieldFormat{urldate}{\adddot\space\bibstring{urlseen}\space} %with urlseen
+\renewbibmacro*{bbx:savehash}{} % no dash
+
+\DefineBibliographyStrings{german}{%
+  in = {In},
+  byeditor  ={(Hrsg)},
+  urlseen = {Abruf am},
+}
+
+%\makeatletter
+
+%% Ohne Komma hinter Firstname
+\def\MKbibnamefirst#1{\expandafter\mkbibnamefirst@i#1..\@nil}
+\def\mkbibnamefirst@i#1.#2.#3\@nil{#1}
+
+%%% kein "und" zwischen Autoren
+\renewcommand*{\finalnamedelim}{%
+  \ifbibliography% NEW
+    {\addcomma\space}% NEW
+    {\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+        \addspace\bibstring{and}\space}}
+
+
+\renewbibmacro*{name:last-first}[4]{%
+  \ifuseprefix
+    {\usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \ifblank{#3}{}{%
+       \ifcapital
+         {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
+     {\mkbibnameprefix{#3}}%
+       \ifpunctmark{'}{}{\addhighpenspace}}%
+     \mkbibnamelast{#1}\isdot
+     \ifblank{#4}{}{\addlowpenspace\mkbibnameaffix{#4}\isdot}%
+     \ifblank{#2}{}{\addlowpenspace\mkbibnamefirst{#2}}}
+    {\usebibmacro{name:delim}{#1}%
+     \usebibmacro{name:hook}{#1}%
+     \mkbibnamelast{#1}\isdot
+     \ifblank{#4}{}{\addlowpenspace\mkbibnameaffix{#4}\isdot}%
+%     \ifblank{#2#3}{}{\addcomma}%
+     \ifblank{#2}{}{\addlowpenspace\MKbibnamefirst{#2}}%
+%     \ifblank{#3}{}{\addlowpenspace\mkbibnameprefix{#3}\isdot}
+}}
+
+%% für article
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  %\setunit*{\adddot}%
+ \printtext[parens]{\printfield{number}}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+  
+  \renewbibmacro*{note+pages}{%
+  \printfield{note}%
+  \setunit{\addcolon\addspace}%
+  \printfield{pages}%
+  \newunit}
+  
+%%% für inbook
+
+\renewbibmacro*{byeditor+others}{%
+  \ifnameundef{editor}
+    {}
+    {%
+     \setunit{\addspace}%
+     \printnames[byeditor]{editor}
+     \usebibmacro{byeditor+othersstrg}%
+     \clearname{editor}%
+     \newunit}%
+  \usebibmacro{byeditorx}%
+  \usebibmacro{bytranslator+others}}
+\renewbibmacro*{title}{%
+  \ifboolexpr{
+    test {\iffieldundef{title}}
+    and
+    test {\iffieldundef{subtitle}}
+  }
+    {}
+    {\printtext[title]{%
+       \printfield[titlecase]{title}%
+       \setunit{\adddot\addspace}%
+       \printfield[titlecase]{subtitle}}%
+     \newunit\setunit{\adddot\addspace}}%
+  \printfield{titleaddon}}
+  
+  
+\newbibmacro*{publisher+location+inbook}{%
+  \iflistundef{publisher}
+    {\setunit*{\addcomma\space}}
+    {\setunit*{\addcolon\space}}%
+  \printlist{publisher}%
+  \setunit*{\addcomma\space}%
+  \printlist{location}%%  \usebibmacro{date}%
+  \newunit}  
+  
+  
+  %%%für online JJJ-MM-TT
+  \renewbibmacro*{url+urldate}{%
+  \printfield{url}%
+  \iffieldundef{urlyear}
+    {}
+    {\setunit*{\addspace}%
+     \printtext[urldate]{\thefield{urlyear}-\thefield{urlmonth}-\thefield{urlday}}%
+     }}
+
+
+%  \iffieldundef{urlyear}
+%    {}
+%    {\setunit*{\addspace}%
+%     \printurldate}}
+  
+%\makeatother
+  
+\DeclareBibliographyDriver{book}{%
+  \printnames{author}%
+  \nopunct
+  \newunit
+  \printtext[parens]{\printfield{year}} % Klammern um Jahr mit printtext[parens]
+  \nopunct
+  \newunit
+  \printfield{title}%
+  \newunit\newblock
+  \setunit{\adddot\addspace}
+   \printfield{edition}%
+   \nopunct
+   \newunit
+  \printlist{publisher}%
+  \newunit
+  \printlist{location}%
+  \finentry}
+
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\addspace}\newblock
+  %\setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  %\newunit
+   \newunit\newblock
+  \setunit{\adddot\addspace}
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+  \setunit{\adddot\addspace}
+  %\usebibmacro{in:}%
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}}
+
+%%% inbook
+\DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\addspace}\newblock
+ %\setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit\newblock
+  \setunit{\adddot\addspace}
+  %\printlist{language}%
+  \nopunct
+  \newunit\newblock
+  \setunit{\adddot\addspace}
+ %\usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+ \usebibmacro{bybookauthor}%
+  \newunit\newblock
+%  
+  \usebibmacro{byeditor+others}%
+  \nopunct
+  \newunit\newblock
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+   \setunit{\adddot\addspace}
+   \nopunct
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  %\newunit
+  \newunit\newblock
+  \setunit{\adddot\addspace}
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+inbook}%
+  \newunit\newblock
+  %\usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}}
+
+
+%%%%%%%%%%%%online
+\DeclareBibliographyDriver{online}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor+others/translator+others}%
+  %\setunit{\labelnamepunct}\newblock
+  %\printtext[parens]{\printfield{year}} % Klammern um Jahr mit printtext[parens]
+  \usebibmacro{date}%
+  \setunit{\addspace}\newblock
+  \usebibmacro{title}%
+  \nopunct
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+ % \printfield{version}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit\newblock
+  \usebibmacro{date}%
+  \newunit\newblock
+  \iftoggle{bbx:eprint}
+    {\usebibmacro{eprint}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{url+urldate}
+  \newunit
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}}
+
+\endinput

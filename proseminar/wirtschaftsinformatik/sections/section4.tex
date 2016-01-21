@@ -1,0 +1,14 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\subsection{Zusammenfassung}
+
+Die Weiterentwicklung von RDF in den letzten zehn Jahren hat den Ansatz von RDF in einer Vielfalt von Anwendungsszenarien ermöglicht. Ein mögliches Anwendungsszenario, nämlich das Hinzufügen von Metadaten im Webseiten mittels RDFa, wurde durch faktische Datensätze von das Globmaplab Web-Applikation erörtert. Dabei wurden die vier Prinzipien der Linked Data demonstriert. Abschließend sollte diese Arbeit den Leser die grundlegendene Konzepte der RDF basierten semantischen Annotationssprachen vermittelt haben.
+
+\subsection{Kritische Würdigung}
+Aufgrund des Zeitmangels war es nicht möglich Vergleiche zwischen den neuen Serialisierungssyntaxen von RDF 1.1, wie zum Beispiel zwischen JSON-LD und RDFa, herzustellen oder Anwendungsansätze mit JSON-LD zu zeigen. Darüber hinaus wurde das dritte Prinzip der Linked Data \hyphenquote{german}{When someone looks up a IRI, provide useful information, using the standards (RDF*, SPARQL)} strenggenommen im \autoref{fig:rdf-intro} verletzt. Die Prädikat zwischen Justus Perthes und der Karte von Sud-Amerika drückt eine \hyphenquote{german}{ist Kartograph von} Beziehung aus, aber der IRI \texttt{http://rdaregistry.info/Elements/u/cartographerOf} ist tatsächlich nicht dereferenzierbar da es nur einen lexikalischen Alias des kanonischen IRIs\footnote{\url{http://rdaregistry.info/Elements/u/P60654}} ist. Aus illustrative Gründen wurde aber der lexikalische IRI benutzt. 
+
+\subsection{Ausblick}
+Wie im Abschnitt \hyphenquote{german}{Kritische Würdigung} erwähnt wurde, war es nicht möglich JSON-LD basierte semantische Annotationsansätze zu zeigen. Nach bestem Wissen wurde es bisher noch nicht erforscht ob der Ansatz von JSON-LD die überbetriebliche Datenintegration zwischen KMUs, die JSON basierte REST-APIs über XML-basierte Webservices bevorzugen, unterstützen könnten\footnotemark{}. Ein solcher Ansatz von JSON-LD könnte in der Zukunft eine vielversprechende Entwicklung sein.
+\footnotetext{Vgl. \cite{Benslimane2008} weshalb solcher Ansatz für KMUs von Interesse sein könnten. }
+\end{document}
