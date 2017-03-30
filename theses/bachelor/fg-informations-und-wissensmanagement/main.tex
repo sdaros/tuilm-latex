@@ -1,0 +1,56 @@
+\documentclass[12pt,
+               a4paper,
+               twoside=false,
+               titlepage=true,
+               bibliography=totoc, % add bibliography to TOC
+               listof=totoc, % add Lists to TOC 
+               numbers=noenddot]{scrartcl}
+\usepackage[subpreambles=true]{standalone} % support compilation of subfiles
+\usepackage{custom-preamble}
+\usepackage{import}
+\usepackage{makeidx}
+\makeindex
+
+\begin{document}
+
+\import{./}{title}
+
+\pagenumbering{arabic}\setcounter{page}{2}
+\newpage
+
+\tableofcontents % Inhaltsverzeichnis
+\newpage
+\listoffigures % Abbildungsverzeichnis
+\newpage
+\listoftables % Tabellenverzeichnis
+\newpage
+\lstlistoflistings
+\newpage
+\listofformels % Formelverzeichnis
+\newpage
+\import{./}{acronyms}
+\newpage
+
+\pagenumbering{arabic}\setcounter{page}{3}
+\section{Einleitung}
+\label{sec:einleitung}
+\import{sections/}{section1}
+
+\section{RDF Grundlagen}
+\label{sec:rdf-grundlagen}
+\import{sections/}{section2} 
+
+\section{Linked Data und Serialisierung}
+\label{sec:linked-data-serialisierung}
+\import{sections/}{section3}
+
+\section{Schlussbemerkungen}
+\label{sec:schlussbemerkungen}
+\import{sections/}{section4}
+\newpage
+
+\printbibliography[heading=bibintoc, title={Literaturverzeichnis}]	
+\newpage
+\import{./}{erklärung} % Eidesstattliche Erklärung
+
+\end{document}
