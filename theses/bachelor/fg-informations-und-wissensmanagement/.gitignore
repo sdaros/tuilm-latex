@@ -25,7 +25,9 @@ main.for
 *.sta
 *.bcf
 *.nlo
+*.nls
 *.run.xml
 *.synctex.gz
-/_minted-main
+/_region_.tex
+/_minted-*
 /*.pdf
