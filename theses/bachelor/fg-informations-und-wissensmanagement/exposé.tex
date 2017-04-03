@@ -1,0 +1,35 @@
+\documentclass[12pt,
+               a4paper,
+               twoside=false,
+              numbers=noenddot]{scrartcl}
+\usepackage[subpreambles=true]{standalone} % support compilation of subfiles
+\usepackage{custom-preamble}
+
+\begin{document}
+\title{foobar}
+\section{Exposé}
+\label{sec:exposé}
+
+Das Exposé gliedert sich wie folgt:  
+
+1.1 Problemstellung
+1.2 Zielsetzung
+1.3 Methodik
+1.4 erwartete Ergebnisse
+
+----
+
+Exposé
+
+\autocite{Wood:14:WNR} foobar
+Im Zuge der Globalisierung sind viele Unternehmen vom hohen Wettbewerbsdruck betroffen. Um ihren Ertrag langfristig zu sichern und innovativ gegenüber der Konkurrenz zu bleiben, bieten viele Industrieunternehmen, zum Beispiel \textquote{Value Added Services}, um die steigende Dienstleistungsnachfrage ihrer Kunden zu befriedigen (vgl.
+Meffert u.a., S. 4). Da diese Dienstleistungen heutzutage öfters durch das World-Wide-Web angeboten werden, kann es vorteilhaft sein, die benötigte Daten auf solche Weise vorzulegen, dass sie möglichst schnell und automatisch wieder verarbeitet werden können. Dieser Art von „Vorbereitung“ (Annotation) der Daten kann mithilfe von semantischer Technologie, wie das Resource-Description-Framework (RDF), erfolgen. Unternehmen, die ihre Daten derart sinnvoll annotieren, könnten einen strategischen Vorteil gegenüber dem Mitbewerber erlangen.
+
+Das Ziel der vorliegenden Arbeit ist es, dem Leser das Resource- Description-Framework näher zu bringen, und zu zeigen, wie sinnvolle Zusammenhänge in Daten durch semantische Annotation effektiv dargestellt werden können. Im ersten Abschnitt wird die Entwicklung von RDF kurz beschrieben, und die benötigte RDF-Grundlagen und zusammenhängende Begrifflichkeiten werden herausgearbeitet. Die Syntax von RDF wird auch anhand einiger Beispiele demonstriert. Der zweite Abschnitt erläutert die Rolle von RDF in Linked-Data-Anwendungen. Das Konzept des Semantic-Webs wird vorgestellt und das Resource- Description-Framework-in-Attributes (RDFa) wird als exemplarischer Ansatz beschrieben. Ferner wird die Anwendung von Linked-Data erweitert, indem neue Ansätze gezeigt werden. Die Rolle von JSON- Linked-Data (JSON-LD) als alternative RDF-Serialisierungssyntax, um REST APIs erweiterbar zu gestalten, wird erkundet. Im letzten Abschnitt werden die Kernkonzepte der Arbeit zusammengefasst und es wird beschrieben, welche Weiterentwicklungen künftig von Interesse sein könnten.
+
+Zusammenfassend soll diese Arbeit die grundlegenden Konzepte der semantischen Annotationssprachen vermitteln und die vielfältigen Ansätze für RDF, von maschinenlesbare HTML Dokumente bis hin zu autonom interagierenden REST basierten APIs, verdeutlichen.
+
+
+\printbibliography[heading=bibintoc]	
+
+\end{document}
