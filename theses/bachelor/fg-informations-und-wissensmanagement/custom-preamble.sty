@@ -5,8 +5,8 @@
 % --------------------------------------------
 
 \AtBeginDocument{
-	\selectlanguage{ngerman}
-%	\selectlanguage{english}
+%	\selectlanguage{ngerman}
+	\selectlanguage{english}
 }
 
 % --------------------------------------------
@@ -58,7 +58,8 @@ BoldItalicFont=texgyretermes-bolditalic.otf,
 \floatstyle{boxed} 
 \restylefloat{figure} % Ränder um alle Abbildungen
 
-\usepackage[english, ngerman]{babel}
+%\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 \usepackage[onehalfspacing]{setspace} %1,5 Zeilenabstand
 \usepackage[printonlyused]{acronym} % Abkürzungsverzeichnis
 \usepackage[colorlinks, linkcolor = black, citecolor = black, filecolor = black, urlcolor = blue]{hyperref}
@@ -71,7 +72,7 @@ BoldItalicFont=texgyretermes-bolditalic.otf,
 \fancyhf{}
 \fancyfoot[R]{\thepage}
 \fancyhead[R]{}
-\fancyhead[L]{RDF basierte semantische Annotationsansätze}
+\fancyhead[L]{Facilitating a Data Quality Level Agreement for Master Data}
 
 % --------- Page Formatting ---------
 
@@ -90,7 +91,7 @@ BoldItalicFont=texgyretermes-bolditalic.otf,
 
 % --------------------- CITATIONS (Biblatex/Biber) ----------------
 
-\usepackage[autostyle,german=quotes]{csquotes} % controls are quotations are handled
+\usepackage[autostyle]{csquotes} % controls are quotations are handled
 
 \usepackage[backend=biber,%
 %
